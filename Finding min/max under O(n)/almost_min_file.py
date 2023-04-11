@@ -1,4 +1,5 @@
 import math
+import random
 def almost_min(list_in):
     list_size = len(list_in)
     root_size = math.sqrt(list_size)
@@ -9,7 +10,7 @@ def almost_min(list_in):
             j = 1
             while j < list_size:
                 # eps is a random term in between [j-i,j+i], it prevents repititions of the same values in the list
-                eps = rand(max(0,j-i),min(list_size-1,j+i))
+                eps = random.randint(max(0,j-i),min(list_size-1,j+i))
                 my_min = min(list_in[eps],my_min)
                 # exponential jumps with respect to i, each loop will hence have time complexity O(log_i(n))
                 j = j*i
@@ -17,7 +18,7 @@ def almost_min(list_in):
         else:
             j = -1
             while -j <= list_size:
-                eps = rand(max(-list_size,j-i),min(-1,j+i))
+                eps = random.randint(max(-list_size,j-i),min(-1,j+i))
                 my_min = min(list_in[eps],my_min)
                 j = j*i        
     return my_min
